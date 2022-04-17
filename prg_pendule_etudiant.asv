@@ -39,7 +39,7 @@ CH.fb = 1e-4;
 CH.vc_max = inf; % No limitation for vc default, max =infini
 CH.Lpend = CH.Lb;
 % Moto Reductor
-CH.delayVc = 0 ; % By defaut  the hachor delay is no required 
+CH.delayVc = 0 ; % By defaut  the hacheor delay is no required 
 p = tf('p') ; % creation fct de transfert p
 tfDelayVc = (1-CH.delayVc/2*p)/(1+CH.delayVc/2*p); % fct transfert approx de Pade du retard
 CH.ssDelayVc = ss(tfDelayVc) ; % conversion to state representation 
@@ -84,17 +84,17 @@ if (QUESTION_23_simu_bo == 1),
     CH.vxc_init = 0;
     CH.alphab_init = 90*pi/180;
     CH.valphab_init= 0;
-    % 2 - lancement simulation 1 , calcul de t1,y1
+    % 2-lancement simulation 1 , calcul de t1,y1
     [t,x,y] = sim('sch_pendule_etudiant_2016',Tfinal);
     figure(1);
     
-    n = 3;
+    n=3;
     subplot(n,1,1);plot(t,y(:,CH.out_alphab)*180/pi);grid on;hold on;xlabel('temps en seconde');ylabel('alphab en degres');
     title('simualtion en BO point d equilibre haut')
     subplot(n,1,2);plot(t,y(:,CH.out_vc));grid on;hold on;xlabel('temps en seconde');ylabel('vc en volt');
     subplot(n,1,3);plot(t,y(:,CH.out_vxc));grid on;hold on;xlabel('temps en seconde');ylabel('vxc en m/s');
     
-    % 3 - conditions dans CH pour la simulation 2
+    % 3-conditions dans CH pour la simulation 2
     CH.vc_time_values = [0,0;3,0;3,1;4,1;4,0];
     CH.Fxcp_time_values = [0 0];
     CH.Cb_time_values = [0,0];
